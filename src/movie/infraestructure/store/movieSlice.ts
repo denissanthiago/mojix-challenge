@@ -3,12 +3,14 @@ import {IMovie} from "../../domain/models/movie";
 
 interface MovieState {
 	listMovie: IMovie[]
-	lang: string
+	lang: string,
+	movieSelected: IMovie | null
 }
 
 const issuesInitialState: MovieState = {
 	listMovie: [],
-	lang: 'en'
+	lang: 'en',
+	movieSelected: null
 }
 
 const movie = createSlice({
@@ -20,13 +22,21 @@ const movie = createSlice({
 		},
 		setLang(state, { payload }: PayloadAction<string>) {
 			state.lang = payload
-		}
+		},
+		setMovieSelected(state, { payload }: PayloadAction<IMovie>) {
+			state.movieSelected = payload
+		},
+		removeMovieSelected(state) {
+			state.movieSelected = null
+		},
 	}
 })
 
 export const {
 	setMovies,
 	setLang,
+	setMovieSelected,
+	removeMovieSelected
 } = movie.actions
 
 export default movie.reducer

@@ -6,8 +6,8 @@ import {RootState} from "../store/rootReducer";
 const useGetMovies = () => {
 	const dispatch = useDispatch()
 
-	const { listMovie, lang } = useSelector((state: RootState) => state.movie)
-	const { getMoviesUseCase } = useMovies(dispatch, lang)
+	const { listMovie, lang, movieSelected } = useSelector((state: RootState) => state.movie)
+	const { getMoviesUseCase, selectMovieUseCase, removeMovieSelectedUseCase } = useMovies(dispatch, lang)
 
 	React.useEffect(() => {
 		getMoviesUseCase()
@@ -16,6 +16,9 @@ const useGetMovies = () => {
 	return {
 		loading: false,
 		listMovie,
+		movieSelected,
+		selectMovie: selectMovieUseCase,
+		removeMovieSelected: removeMovieSelectedUseCase,
 	}
 }
 

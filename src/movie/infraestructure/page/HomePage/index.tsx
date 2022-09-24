@@ -4,6 +4,7 @@ import SelectLang from "../../components/SelectLang";
 import Table from "../../components/Table";
 
 import styles from './styles.module.css'
+import ModalMovie from "../../components/ModalMovie";
 
 const HomePage = () => {
 
@@ -14,6 +15,7 @@ const HomePage = () => {
 		</Header>
 		<section>
 			<Table/>
+			<ModalMovie/>
 		</section>
 	</div>
 }

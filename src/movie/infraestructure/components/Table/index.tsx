@@ -3,17 +3,20 @@ import useGetMovies from "../../hooks/useGetMovies";
 import styles from './styles.module.css'
 
 const Table = () => {
-	const { listMovie } = useGetMovies();
+	const { listMovie, selectMovie } = useGetMovies();
 
 	return <table className={styles.container}>
-		<tr>
-			<th className={styles.container__title}>Index</th>
-			<th className={styles.container__title}>Title</th>
-			<th className={styles.container__title}>Popularity</th>
-			<th className={styles.container__title}>Release Date</th>
-		</tr>
-		{ listMovie.map( (movie, index) => <TableItem index={index} key={movie.id} movie={movie}/> ) }
-
+		<thead>
+			<tr>
+				<th className={styles.container__title}>Index</th>
+				<th className={styles.container__title}>Title</th>
+				<th className={styles.container__title}>Popularity</th>
+				<th className={styles.container__title}>Release Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			{ listMovie.map( (movie, index) => <TableItem onClick={selectMovie} index={index} key={movie.id} movie={movie}/> ) }
+		</tbody>
 	</table>
 }
 

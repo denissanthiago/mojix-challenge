@@ -1,7 +1,8 @@
 import React from "react";
 import movieService from '../../infraestructure/services'
 import {AnyAction, Dispatch} from "@reduxjs/toolkit";
-import {setMovies} from "../../infraestructure/store/movieSlice";
+import { removeMovieSelected, setMovies, setMovieSelected } from "../../infraestructure/store/movieSlice";
+import {IMovie} from "../../domain/models/movie";
 
 const useMovies = ( dispatch:  Dispatch<AnyAction>, lang: string) => {
 	const { getMoviesFetch } = movieService
@@ -11,8 +12,18 @@ const useMovies = ( dispatch:  Dispatch<AnyAction>, lang: string) => {
 		dispatch(setMovies(response.data.results))
 	}, [lang])
 
+	const selectMovieUseCase = (movie: IMovie) => {
+		dispatch(setMovieSelected(movie))
+	}
+
+	const removeMovieSelectedUseCase = () => {
+		dispatch(removeMovieSelected())
+	}
+
 	return {
-		getMoviesUseCase
+		getMoviesUseCase,
+		selectMovieUseCase,
+		removeMovieSelectedUseCase,
 	}
 }
 
