@@ -1,0 +1,14 @@
+.container {
+    background-color: aliceblue;
+    color: #282c34;
+    cursor: pointer;
+}
+
+.container :hover {
+    color: blue;
+}
+
+.container__is_number_prime {
+    background-color: antiquewhite;
+    color: cadetblue;
+}

@@ -12,7 +12,7 @@ const Table = () => {
 			<th className={styles.container__title}>Popularity</th>
 			<th className={styles.container__title}>Release Date</th>
 		</tr>
-		{ listMovie.map( movie => <TableItem key={movie.id} movie={movie}/> ) }
+		{ listMovie.map( (movie, index) => <TableItem index={index} key={movie.id} movie={movie}/> ) }
 
 	</table>
 }
