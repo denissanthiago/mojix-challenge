@@ -5,8 +5,6 @@ interface ICardMovie {
 	movie: IMovie | null
 }
 
-const URL_IMAGE = 'https://image.tmdb.org/t/p/w500/'
-
 const CardMovie = ( { movie }: ICardMovie): JSX.Element => {
 	return <div className={styles.container}>
 		<div>
@@ -38,7 +36,7 @@ const CardMovie = ( { movie }: ICardMovie): JSX.Element => {
 			</div>
 		</div>
 		<div className={styles.container__image}>
-			<img src={`${URL_IMAGE}${movie?.poster_path}`} alt='image video'/>
+			<img src={`${process.env.REACT_APP_BASE_URL_IMAGE}${movie?.poster_path}`} alt='image video'/>
 		</div>
 	</div>
 }
